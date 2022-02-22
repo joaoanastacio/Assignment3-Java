@@ -217,7 +217,8 @@ public class Model {
    */
   public String getHeightInFeetAndInches() {
     int heightInFeet = this.heightInches / INCHES_PER_FOOT;
-    return String.format("%d feet %d inch", heightInFeet, heightInches);
+    int heightInInches = this.heightInches % INCHES_PER_FOOT;
+    return String.format("%d feet %d inch", heightInFeet, heightInInches);
   }
 
   /**
@@ -226,9 +227,9 @@ public class Model {
    * @throws IllegalArgumentException
    */
   public void setHeight(int feet, int inches) {
-    int convertedToInche = inches + (feet * INCHES_PER_FOOT);
-    if(convertedToInche >= MINIMUM_HEIGHT && convertedToInche <= MAXIMUM_HEIGHT) {
-      this.heightInches = convertedToInche;
+    int convertedToInches = inches + (feet * INCHES_PER_FOOT);
+    if(convertedToInches >= MINIMUM_HEIGHT && convertedToInches <= MAXIMUM_HEIGHT) {
+      this.heightInches = convertedToInches;
     } else {
       throw new IllegalArgumentException("Height must be greater than 24 and less than 84");
     }
